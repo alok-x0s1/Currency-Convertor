@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { InputBox } from "./components"
 import useCurrencyInfo from "./hooks/useCurrencyInfo"
+import "./App.css"
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
   }
 
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to])
+    setConvertedAmount(amount * currencyInfo[to].toFixed(2));
   }
 
   return (
@@ -30,8 +31,11 @@ function App() {
             backgroundImage: `url('https://images.unsplash.com/photo-1535868463750-c78d9543614f?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
         }}
     >
-        <div className="w-full">
-            <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+        <div className="w-full min-h-screen p-12 flex flex-wrap justify-between items-center">
+            <a className="max-w-96 rounded-full hidden lg:block" href="https://twitter.com/hiteshdotcom" target="_blank">
+                <img src='https://images.pexels.com/photos/18264705/pexels-photo-18264705/free-photo-of-smiling-man-in-headphones-with-microphone-using-a-apple-macbook.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt="Image" className="rounded-full" />
+            </a>
+            <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30 text-center">
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -67,8 +71,8 @@ function App() {
                             onCurrencyChange={(currency) => setTo(currency)}
                         />
                     </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
-                        Convert {from.toUpperCase()} to {to.toUpperCase()}
+                    <button className="button">
+                        <span class="button-content">Convert {from.toUpperCase()} to {to.toUpperCase()}</span>
                     </button>
                 </form>
             </div>
